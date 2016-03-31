@@ -32,7 +32,7 @@
     <script type="text/javascript">
       var data = 0;
       var username;
-      
+      var game_started = 0; 
       $("#username_submit_button").click(function() {
       data = $("form").serialize();
       username  = data.split("=")[1]; 
@@ -41,15 +41,18 @@
       data:"user="+username,
       type:"POST",
       });
+      poll_username(); 
       });
       
       function poll_username() {
+      if(game_started==1) return; 
         setTimeout(function() {
           $.ajax({
             url: "/main/"+username,
             type: "GET",
             success: function(data) {
-              document.body.innerHTML = data; 
+              alert("List of users: " + data);
+              game_started=1;
          },
          dataType: "text",
          complete: poll_username,
@@ -66,7 +69,7 @@
           url: "/poll",
           type:"GET", 
           success: function(data) {
-            alert(data); 
+            document.body.innerHTML+=data
             },
           dataType:"text", 
           complete:poll_hello,
@@ -74,7 +77,8 @@
         });
       }, 5000)
       }
-      poll_hello(); 
+      poll_hello();
+      */
     </script>
   </body>
 </html>
