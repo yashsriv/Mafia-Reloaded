@@ -13,6 +13,13 @@ def index():
     """
     return render_template('index.html')
 
+@APP.route('/poll')
+def poll():
+    """
+    Send constant data to a poller
+    """
+    return "This is a reply"
+
 @APP.route('/status')
 def status():
     """
