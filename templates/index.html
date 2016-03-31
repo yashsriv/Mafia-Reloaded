@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title> Mafia Reloaded </title>
+    <link rel="stylesheet" href="static/css/normalize.css"></link>
+    <link rel="stylesheet" href="static/css/skeleton.css"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <style type="text/css">
+      div#initialpage{
+      margin-top:20%; 
+      }
+      h1#title {
+      text-align:center;
+      margin-bottom:5%; 
+      }
+    </style>
+  </head>
+  <body class="container">
+    <div id = "initialpage">
+      <div class="row">
+	<h1 id="title">Mafia Reloaded</h1>
+      </div>
+      <form>
+	<div class = "row">
+	  <div class="eight columns" id = "username_input">
+	    <input type="text" placeholder="Enter your username" id="username_input_box" class="u-full-width" name="user" />
+	  </div>
+	  <div class="four columns" id="username_submit">
+	    <input type="button" class="button-primary" value="Start Playing" id="username_submit_button" />
+	  </div>
+      </form>
+    </div>
+    <script type="text/javascript">
+      $("#username_submit_button").click(function() {
+      var data  =  $("form").serialize();
+      $.ajax({
+      url:'/main/',
+      data:data,
+      type:"POST",
+      });
+      });
+    </script>
+  </body>
+</html>
+    

@@ -1,10 +1,17 @@
 """
 Server for mafia
 """
-from flask import Flask, request
+from flask import Flask, request, render_template
 APP = Flask(__name__)
 CLIENTS = []
 GAME_STARTED = False
+
+@APP.route('/')
+def index():
+    """
+    Index page
+    """
+    return render_template('index.html')
 
 @APP.route('/status')
 def status():
