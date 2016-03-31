@@ -1,2 +1,2 @@
 # Mafia-Reloaded
-A Mafia Application
+A Mafia Application for multiplayer gaming
