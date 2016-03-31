@@ -30,14 +30,31 @@
       </form>
     </div>
     <script type="text/javascript">
-      $("#username_submit_button").click(function() {
       var data  =  $("form").serialize();
+      var username = data.split("=")[1]
+      
+      $("#username_submit_button").click(function() {
       $.ajax({
       url:'/main/',
-      data:data,
+      data:username,
       type:"POST",
       });
       });
+      function poll_username() {
+        setTimeout(function() {
+          $.ajax({
+            url: "/main/"+username,
+            type: "GET",
+            success: function(data) {
+              document.body.innerHTML = data; 
+         },
+         dataType: "text",
+         complete: poll_username,
+         timeout: 2000
+        })
+      },
+      5000);
+     }
     </script>
   </body>
 </html>
